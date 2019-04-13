@@ -1,59 +1,26 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>HelloWorld_1_02</title>
-    <link rel="stylesheet" href="stylesheet.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  </head>
-
-
-  <body>
-
-
-    <div class="header">
-      <div class="header-logo">HelloWorld2</div>
-      <div class="header-list">
-        <ul>
-          <li>Door_1</li>
-          <li>Door_2</li>
-          <li>Door_3</li>
-        </ul>
-      </div>
-    </div>
-
-
-
-    <div class="main">
-      <div class="copy-container">
-        <h1>Trial production<span>.</span></h1>
-        <h2>hello world2</h2>
-      </div>
-
-      <div class="contents">
-        <h3 class="section-title">door</h3>
-
-      </div>
-      <div class="samplebox">
-
-      </div>
-
-
-
-
-
-    </div>
-
-    <div class="footer">
-      <div class="footer-logo">HelloWorld_1_02</div>
-      <div class="footer-list">
-        <ul>
-          <li>Door_3</li>
-          <li>Door_2</li>
-          <li>Door_1</li>
-        </ul>
-      </div>
-    </div>
-    <script type="text/javascript" src="script.js"></script>
-  </body>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScriptでビンゴゲームのデモ | てらこや.work</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="bingo.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <div id="result" class="result"></div>
+  <ul id="number" class="number"></ul>
+  <div class="wrapper-button">
+    <button id="button" class="button">START</button>
+  </div>
+ 
+  <audio id="sound-play" preload="auto">
+    <source src="start.mp3" type="audio/mp3">
+  </audio>
+  <audio id="sound-pause" preload="auto">
+    <source src="pause.mp3" type="audio/mp3">
+  </audio>
+</div>
+</body>
 </html>
