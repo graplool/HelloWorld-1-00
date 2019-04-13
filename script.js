@@ -1,22 +1,51 @@
-
-
-$(document).ready(function () {
-    //アニメーションスピード
-    var scrollSpeed = 1;
-    //動かす画像サイズ取得
-    var imgWidth = $('body').css("samplebox", width);
-    //画面の幅を取得
-    var windowWidth = $(window).width();
-    //画面の高さ取得
-    var windowWidth = $(window).height();
-    //画像の初期位置
-    var posX = 0;
-    //ループ処理
-    setInterval(function(){
-        //画像のサイズまで移動したら0に戻る。
-        if (posX >= imgWidth) posX= 0;
-        //scrollSpeed分移動
-        posX += scrollSpeed;
-        $('body').css("background-position",posX+"px 0px");
-    }, 1);
+$(function(){
+  "use strict";
+ 
+  var
+    max = 50,
+    bingo = [],
+    status = true,
+    roulette,
+    random,
+    number,
+    result,
+    $number = $("#number"),
+    $result = $("#result"),
+    $sound_play = $("#sound-play"),
+    $sound_pause = $("#sound-pause");
+ 
+  for(var i = 1; i <= max; i++) {
+    bingo.push(i);
+    $number.append($("<li>").text(("0" + i).slice(-2)));
+  }
+ 
+  $("#button").on("click", function(){
+    if(status) {
+      status = false;
+      $(this).text("STOP");
+      $sound_play.trigger("play");
+      $sound_pause.trigger("pause");
+      $sound_pause[0].currentTime = 0;
+ 
+      roulette = setInterval(function(){
+        random = Math.floor(Math.random() * bingo.length);
+        number = bingo[random];
+        $result.text(number);
+      }, 10);
+    } else {
+      status = true;
+      $(this).text("START");
+      $sound_pause.trigger("play");
+      $sound_play.trigger("pause");
+      $sound_play[0].currentTime = 0;
+ 
+      clearInterval(roulette);
+ 
+      result = bingo[random];
+      bingo.splice(random, 1);
+ 
+      $result.text(result);
+      $number.find("li").eq(parseInt(result, 10) - 1).addClass("hit");
+    }
+  });
 });
